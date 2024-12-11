@@ -1,5 +1,5 @@
 import express from "express";
-import session from "express-session";
+import cookieSession from "cookie-session";
 import passport from "./config/passportConfig.js"; 
 import cors from "cors";
 import dotenv from "dotenv";
@@ -10,12 +10,11 @@ dotenv.config();
 const app = express();
 
 app.use(
-  session({
-    secret: process.env.JWT_SECRET,
-    resave: false,
-    saveUninitialized: false,
-    cookie: { secure: false }, 
-  })
+	cookieSession({
+		name: "session",
+		keys: ["cyberwolve"],
+		maxAge: 24 * 60 * 60 * 100,
+	})
 );
 
 // Initialize Passport

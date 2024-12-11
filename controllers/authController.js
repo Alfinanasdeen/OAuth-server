@@ -22,23 +22,23 @@ export const loginFailed = (req, res) => {
 export const googleAuth = passport.authenticate("google", ["profile", "email"]);
 
 export const googleCallback = passport.authenticate("google", {
-  successRedirect: "http://darling-licorice-946ff7.netlify.app",
+  successRedirect: "https://darling-licorice-946ff7.netlify.app",
   failureRedirect: "/login/failed",
 });
 
 export const githubAuth = passport.authenticate("github", ["profile", "email"]);
 
 export const githubCallback = passport.authenticate("github", {
-  successRedirect: "http://darling-licorice-946ff7.netlify.app",
+  successRedirect: "https://darling-licorice-946ff7.netlify.app",
   failureRedirect: "/login/failed",
 });
 
 export const logout = (req, res) => {
   req.logout((err) => {
     if (err) {
-      console.error(err); 
+      console.error(err);
       return res.status(500).json({ message: "Failed to log out" });
     }
-    res.redirect("http://darling-licorice-946ff7.netlify.app"); 
+    res.redirect("https://darling-licorice-946ff7.netlify.app");
   });
 };

@@ -27,17 +27,19 @@ passport.use(
       callbackURL: `${process.env.SERVER_URL}/auth/github/callback`,
     },
     function (accessToken, refreshToken, profile, done) {
+      console.log("Google Profile:", profile);
       done(null, profile);
     }
   )
 );
 
 passport.serializeUser((user, done) => {
+  console.log('Serializing user:', user); // Log user during serialization
   done(null, user);
 });
 
 passport.deserializeUser((user, done) => {
+  console.log('Deserializing user:', user); // Log user during deserialization
   done(null, user);
 });
-
 export default passport;

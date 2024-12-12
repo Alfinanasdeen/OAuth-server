@@ -44,7 +44,7 @@ app.use(
     },
   })
 );
-
+console.log(process.env.NODE_ENV);
 // Initialize Passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -52,7 +52,7 @@ app.use(passport.session());
 // CORS setup
 app.use(
   cors({
-    origin: process.env.CLIENT_URL, // Define your client's URL
+    origin: "*", // Define your client's URL
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })

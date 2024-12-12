@@ -12,8 +12,12 @@ dotenv.config();
 const app = express();
 
 // MongoDB Connection
+
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGODB_URI, {
+    ssl: true,
+  })
+
   .then(() => {
     console.log("MongoDB connected...");
   })

@@ -1,10 +1,11 @@
 import passport from "passport";
 
 export const loginSuccess = (req, res) => {
+  console.log("User session:", req.user); // Log user data
   if (req.user) {
     res.status(200).json({
       error: false,
-      message: "Successfully Loged In",
+      message: "Successfully Logged In",
       user: req.user,
     });
   } else {

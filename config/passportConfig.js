@@ -8,11 +8,9 @@ dotenv.config();
 passport.use(
   new GoogleStrategy(
     {
-      clientID:
-        "36402209140-hnongt502qfeguhk7p4rgnlqufh310j9.apps.googleusercontent.com",
-      clientSecret: "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",
-      callbackURL:
-        "https://oauth-server-l3vt.onrender.com/auth/google/callback",
+      clientID: process.env.CLIENT_ID,
+      clientSecret: process.env.CLIENT_SECRET,
+      callbackURL: `${process.env.SERVER_URL}/auth/google/callback`,
       scope: ["profile", "email"],
     },
     function (accessToken, refreshToken, profile, callback) {
@@ -26,8 +24,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL:
-        "https://oauth-server-l3vt.onrender.com/auth/github/callback",
+      callbackURL: `${process.env.SERVER_URL}/auth/github/callback`,
     },
     function (accessToken, refreshToken, profile, done) {
       done(null, profile);
@@ -41,7 +38,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   // Fetch the user from your database using the ID
-  const user = await User.findById(id);
+  const user = await user.findById(id);
   done(null, user);
 });
 

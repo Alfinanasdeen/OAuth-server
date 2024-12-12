@@ -52,7 +52,7 @@ app.use(passport.session());
 // CORS setup
 app.use(
   cors({
-    origin: "*", // Define your client's URL
+    origin: process.env.CLIENT_URL, // Define your client's URL
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })

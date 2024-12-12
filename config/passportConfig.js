@@ -10,7 +10,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: "/auth/google/callback",
+      callbackURL: "https://oauth-server-l3vt.onrender.com/auth/google/callback",
       scope: ["profile", "email"],
     },
     function (accessToken, refreshToken, profile, callback) {
@@ -24,7 +24,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: "/auth/github/callback",
+      callbackURL: "https://oauth-server-l3vt.onrender.com/auth/github/callback",
     },
     function (accessToken, refreshToken, profile, done) {
       done(null, profile);

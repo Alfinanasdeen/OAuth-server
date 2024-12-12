@@ -1,7 +1,8 @@
 import passport from "passport";
 
 export const loginSuccess = (req, res) => {
-  console.log("User session:", req.user); // Log user data
+  console.log("User:", req.user);
+  console.log("Session:", req.session);
   if (req.user) {
     res.status(200).json({
       error: false,

@@ -1,6 +1,6 @@
 import express from "express";
 import session from "express-session"; // Session management middleware
-import passport from "passport"; // Passport for authentication
+import passport from "./config/passportConfig.js"; // Passport for authentication
 import mongoose from "mongoose"; // Mongoose to interact with MongoDB
 import MongoStore from "connect-mongo"; // MongoDB session store
 import cors from "cors";

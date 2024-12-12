@@ -44,7 +44,7 @@ app.use(
     },
   })
 );
-console.log(process.env.NODE_ENV);
+console.log(`${process.env.SERVER_URL}/auth/google/callback`);
 // Initialize Passport
 app.use(passport.initialize());
 app.use(passport.session());

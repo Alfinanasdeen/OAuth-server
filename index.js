@@ -29,7 +29,7 @@ app.use(passport.session());
 
 app.use(
   cors({
-    origin: "https://darling-licorice-946ff7.netlify.app",
+    origin: "http://darling-licorice-946ff7.netlify.app",
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })

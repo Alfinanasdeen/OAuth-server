@@ -1,5 +1,5 @@
 import express from "express";
-import session from "express-session"; // Use express-session
+import cookieSession from "cookie-session";
 import passport from "./config/passportConfig.js";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -9,18 +9,11 @@ dotenv.config();
 
 const app = express();
 
-// Session Middleware
 app.use(
-  session({
-    secret: "cyberwolve",
-    resave: false, // Do not save session if unmodified
-    saveUninitialized: false, // Do not create session until something is stored
-    cookie: {
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
-      secure: process.env.NODE_ENV === "production",
-      httpOnly: true, // Prevent client-side JS from accessing cookies
-      sameSite: "none",
-    },
+  cookieSession({
+    name: "session",
+    keys: ["alfina"],
+    maxAge: 24 * 60 * 60 * 100,
   })
 );
 

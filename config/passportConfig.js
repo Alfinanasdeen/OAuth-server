@@ -10,7 +10,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: process.env.SERVER_URL,
+      callbackURL: "https://oauth-server-l3vt.onrender.com",
       scope: ["profile", "email"],
     },
     function (accessToken, refreshToken, profile, callback) {

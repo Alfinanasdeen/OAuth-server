@@ -1,11 +1,11 @@
 import express from "express";
-import session from "express-session"; 
-import passport from "./config/passportConfig.js"; 
-import mongoose from "mongoose"; 
-import MongoStore from "connect-mongo"; 
+import session from "express-session";
+import passport from "./config/passportConfig.js";
+import mongoose from "mongoose";
+import MongoStore from "connect-mongo";
 import cors from "cors";
 import dotenv from "dotenv";
-import authRoutes from "./routes/authRoutes.js"; 
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 
@@ -29,16 +29,16 @@ mongoose
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI, 
-      collectionName: "sessions", 
+      mongoUrl: process.env.MONGODB_URI,
+      collectionName: "sessions",
       ttl: 14 * 24 * 60 * 60,
     }),
     secret: "cyberwolve",
-    resave: false, 
+    resave: false,
     saveUninitialized: false,
     cookie: {
-      maxAge: 24 * 60 * 60 * 1000, 
-      secure: process.env.NODE_ENV === "production", 
+      maxAge: 24 * 60 * 60 * 1000,
+      secure: process.env.NODE_ENV === "production",
       httpOnly: true,
       sameSite: "none",
     },
@@ -53,8 +53,8 @@ app.use(passport.session());
 // CORS setup
 app.use(
   cors({
-    origin: process.env.CLIENT_URL, 
-    methods: ["GET","POST","PUT","DELETE"],
+    origin: process.env.CLIENT_URL,
+    methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   })
 );

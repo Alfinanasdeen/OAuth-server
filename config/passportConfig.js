@@ -10,7 +10,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: `${process.env.CLIENT_URL}/auth/google/callback`,
+      callbackURL: process.env.SERVER_URL,
       scope: ["profile", "email"],
     },
     function (accessToken, refreshToken, profile, callback) {
@@ -24,7 +24,7 @@ passport.use(
     {
       clientID: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-      callbackURL: `${process.env.SERVER_URL}/auth/github/callback`,
+      callbackURL: process.env.SERVER_URL,
     },
     function (accessToken, refreshToken, profile, done) {
       console.log("Google Profile:", profile);

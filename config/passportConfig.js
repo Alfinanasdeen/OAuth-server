@@ -34,20 +34,19 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  console.log("Serializing user:", user); // Log user during serialization
+  console.log("Serializing user:", user); 
   done(null, user);
 });
 
 passport.deserializeUser((id, done) => {
   console.log("Deserializing user ID:", id);
-  // Here, `id` should be the identifier you set in `serializeUser`
-  // Retrieve the user from the database using `id`
+
   User.findById(id, (err, user) => {
     if (err) {
       return done(err);
     }
     console.log("Deserialized user:", user);
-    done(null, user); // Attach user to the request
+    done(null, user);
   });
 });
 

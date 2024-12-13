@@ -1,11 +1,11 @@
 import express from "express";
-import session from "express-session"; // Session management middleware
-import passport from "./config/passportConfig.js"; // Passport for authentication
-import mongoose from "mongoose"; // Mongoose to interact with MongoDB
-import MongoStore from "connect-mongo"; // MongoDB session store
+import session from "express-session"; 
+import passport from "./config/passportConfig.js"; 
+import mongoose from "mongoose"; 
+import MongoStore from "connect-mongo"; 
 import cors from "cors";
-import dotenv from "dotenv"; // To use .env for environment variables
-import authRoutes from "./routes/authRoutes.js"; // Your auth routes
+import dotenv from "dotenv";
+import authRoutes from "./routes/authRoutes.js"; 
 
 dotenv.config();
 
@@ -29,22 +29,23 @@ mongoose
 app.use(
   session({
     store: MongoStore.create({
-      mongoUrl: process.env.MONGODB_URI, // MongoDB URI
-      collectionName: "sessions", // MongoDB collection to store sessions
-      ttl: 14 * 24 * 60 * 60, // Set session expiration time (14 days in seconds)
+      mongoUrl: process.env.MONGODB_URI, 
+      collectionName: "sessions", 
+      ttl: 14 * 24 * 60 * 60,
     }),
-    secret: "cyberwolve", // Session secret key
-    resave: false, // Don't resave session if unchanged
-    saveUninitialized: false, // Don't save session if it's uninitialized
+    secret: "cyberwolve",
+    resave: false, 
+    saveUninitialized: false,
     cookie: {
-      maxAge: 24 * 60 * 60 * 1000, // 1 day
-      secure: process.env.NODE_ENV === "production", // Set to true in production
-      httpOnly: true, // Prevent client-side JavaScript access to cookie
-      sameSite: "none", // Allow cross-site cookies
+      maxAge: 24 * 60 * 60 * 1000, 
+      secure: process.env.NODE_ENV === "production", 
+      httpOnly: true,
+      sameSite: "none",
     },
   })
 );
 console.log(`${process.env.SERVER_URL}/auth/google/callback`);
+console.log(process.env.CLIENT_URL);
 // Initialize Passport
 app.use(passport.initialize());
 app.use(passport.session());
@@ -52,7 +53,7 @@ app.use(passport.session());
 // CORS setup
 app.use(
   cors({
-    origin: process.env.CLIENT_URL, // Define your client's URL
+    origin: process.env.CLIENT_URL, 
     methods: "GET,POST,PUT,DELETE",
     credentials: true,
   })

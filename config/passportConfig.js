@@ -10,7 +10,7 @@ passport.use(
     {
       clientID: process.env.CLIENT_ID,
       clientSecret: process.env.CLIENT_SECRET,
-      callbackURL: `${process.env.SERVER_URL}/auth/google/callback`,
+      callbackURL: `${process.env.CLIENT_URL}/auth/google/callback`,
       scope: ["profile", "email"],
     },
     function (accessToken, refreshToken, profile, callback) {
@@ -34,7 +34,7 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  console.log("Serializing user:", user); 
+  console.log("Serializing user:", user);
   done(null, user);
 });
 
